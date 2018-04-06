@@ -1,0 +1,24 @@
+{
+  "name": "visualisation",
+  "version": "0.0.1",
+  "description": "Cardano Blockchain Visualisation",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack && node --inspect--brk=9229 app.js",
+    "debug": "cross-env NODE_ENV=development NODE_DEBUG=fs node --inspect-brk=9229 ./src/app.js"
+  },
+  "keywords": [],
+  "author": "Pal Dorogi",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  },
+  "dependencies": {
+    "cross-env": "^5.1.4",
+    "node-rest-client": "^3.1.0",
+    "vivagraphjs": "^0.5.0"
+  }
+}

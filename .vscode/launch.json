@@ -1,0 +1,30 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Program",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/src/app.js",
+      "outFiles": [
+        "${workspaceRoot}/dist/adavisual.js"
+      ],
+      "sourceMaps": true
+    },
+    {
+      "name": "Launch via NPM",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+          "run-script", "debug"
+      ],
+      "port": 9229
+    }
+  ]
+}
