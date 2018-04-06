@@ -7,3 +7,5 @@ npm-debug.log
 dump
 *.swp
 package-lock.json
+dist/*.js
+dist/*.map
