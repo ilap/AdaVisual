@@ -23,6 +23,7 @@
     "connect": "^3.6.6",
     "cross-env": "^5.1.4",
     "node-rest-client": "^3.1.0",
-    "serve-static": "^1.13.2"
+    "serve-static": "^1.13.2",
+    "vivagraphjs": "^0.10.1"
   }
 }
