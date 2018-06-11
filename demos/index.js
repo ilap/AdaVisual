@@ -1,12 +1,12 @@
 module.exports.main = function () {
-  //var graph = require('ngraph.generators').balancedBinTree(6);
+
   var graph = require('ngraph.graph')();
   var createPixiGraphics = require('ngraph.pixi');
 
+  // TODO: Separate the UI from the business logic
   var createNodes = require('./lib/mock_data.js')(graph)
 
   var layout = createLayout(graph);
-
 
   var pixiGraphics = createPixiGraphics(graph, layout);
   // setup our custom looking nodes and links:
@@ -16,9 +16,9 @@ module.exports.main = function () {
     .renderLink(require('./lib/renderLink'));
 
   console.log(pixiGraphics.graphGraphics)
-  pixiGraphics.graphGraphics.scale.x = 0.15
+  pixiGraphics.graphGraphics.scale.x = 0.35
 
-  pixiGraphics.graphGraphics.scale.y = 0.15
+  pixiGraphics.graphGraphics.scale.y = 0.35
 
   //layout = pixiGraphics.layout;
   //var node = graph.getNode(tx) 

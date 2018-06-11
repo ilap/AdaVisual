@@ -7,9 +7,10 @@ module.exports = function nodes (graph) {
     }
   
     var is = getRandomExp(1, 12, 16)
-    var os = getRandomInt(2, 24, 16)
+    var os = getRandomExp(2, 24, 16)
      
     var tx = graph.addNode('t' + id, { type: 't', value: getRandomExp(100, 1000000, 1000 ) })
+    console.log("In: %d, Out: %d, Txs: %d", is, os, tx)
 
     var io = {}
     for ( var i = 0; i < is; i++) {

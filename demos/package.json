@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node_modules/.bin/browserify -s ngraph index.js > bundle.js"
+    "start": "node_modules/.bin/browserify -d -s ngraph index.js > bundle.js"
   },
   "dependencies": {
     "ngraph.generators": "latest",
