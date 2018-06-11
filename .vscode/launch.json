@@ -25,6 +25,40 @@
           "run-script", "debug"
       ],
       "port": 9229
-    }
+    },{
+    "type": "node",
+    "request": "launch",
+    "name": "Launch Program"
+    "stopOnEntry": false,
+    "args": [],
+    "cwd": "${workspaceFolder},
+    "preLaunchTask": null,
+    "runtimeExecutable": "npm",
+    "runtimeArgs": [
+        "run-script", "start"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "console": "integratedTerminal",
+    "port": 9229
+},{
+  "type": "node",
+  "request": "launch",
+  "name": "Launch Webcack Program",
+  "stopOnEntry": false,
+  "args": [],
+  "cwd": "${workspaceFolder}",
+  "preLaunchTask": null,
+  "runtimeExecutable": "npm",
+  "runtimeArgs": [
+      "run-script", "start"
+  ],
+  "env": {
+      "NODE_ENV": "development"
+  },
+  "console": "integratedTerminal",
+  "port": 9229
+}
   ]
 }

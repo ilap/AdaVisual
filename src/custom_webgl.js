@@ -1,16 +1,16 @@
 // here define functions to draw points and lines 
-import Viva from 'vivagraphjs';
+var Viva = require('./vivagraph.js');
 
-//Viva.Graph.View.webglDualColorLine = function (t, e) {
-function dualColorLine (t, e) {
+Viva.Graph.View.webglDualColorLine = function (t, e) {
+//function dualColorLine (t, e) {
     return {
         start: Viva.Graph.View._webglUtil.parseColor(t),
         end: Viva.Graph.View._webglUtil.parseColor(e)
     }
 }
 
-//Viva.Graph.View.webglDualColorLinkProgram = function () {
-function dialColorLinkProgram () {
+Viva.Graph.View.webglDualColorLinkProgram = function () {
+//function dialColorLinkProgram () {
     var t, e, r, i, n, a, o, s, u, c, d = 6,
         l = 2 * (2 * Float32Array.BYTES_PER_ELEMENT + Uint32Array.BYTES_PER_ELEMENT),
         f = ["precision mediump float;", "varying vec4 color;", "void main(void) {", "   gl_FragColor = color;", "}"].join("\n"),
@@ -59,8 +59,8 @@ function dialColorLinkProgram () {
         }
     }
 }
-//Viva.Graph.View.webglCustomNodeProgram = function () {
-function buildCircleNodeShader() {
+Viva.Graph.View.webglCustomNodeProgram = function () {
+//function buildCircleNodeShader() {
     var t, e, r, i, n, a, o, s, u, 
         c = 4,
         d = [
@@ -138,8 +138,8 @@ function buildCircleNodeShader() {
     }
 }
 
-Viva.Graph.View.webglCustomNodeProgram = function () {
-//function buildCircleNodeShader() {
+//Viva.Graph.View.webglCustomNodeProgram = function () {
+function buildCircleNodeShader() {
     // For each primitive we need 4 attributes: x, y, color and size.
     var ATTRIBUTES_PER_PRIMITIVE = 4,
         nodesFS = [
@@ -268,5 +268,5 @@ Viva.Graph.View.webglCustomNodeProgram = function () {
     };
 }
 
-Viva.Graph.View.webglDualColorLine = dualColorLine;
+//Viva.Graph.View.webglDualColorLine = dualColorLine;
 module.exports = Viva;

@@ -1,9 +1,7 @@
-import _ from 'lodash';
-import Client from 'node-rest-client';
-import Viva from './custom_webgl.js';
+var Client = require('node-rest-client').Client;
+var Viva = require('./custom_webgl.js');
 
 var graphics = Viva.Graph.View.webglGraphics();
-process.exit()
 
 var args = {
     path: {
@@ -11,15 +9,18 @@ var args = {
     },
     headers: {
         "test-header": "client-api"
-    }
+    },
+    method: 'HEAD',
+    mode: 'no-cors'
 }
 
 //writeToScreen("SSSSSSSS:");
-//var client = Client;
+var client = new Client();
+var ina = function() {};
 //var client = new Client(args);
-//writeToScreen(JSON.stringify(client));
-//client.registerMethod("getAllTxs", "http://cardanoexplorer.com/api/txs/last", "GET");
-//client.registerMethod("getTxSummary", "http://cardanoexplorer.com/api/txs/summary/${id}", "GET");
+writeToScreen(JSON.stringify(client));
+client.registerMethod("getAllTxs", "http://cardanoexplorer.com/api/txs/last", "GET");
+client.registerMethod("getTxSummary", "http://cardanoexplorer.com/api/txs/summary/${id}", "GET");
 
 
 var isWebgl = graphics.isSupported();
@@ -48,7 +49,7 @@ function log2(val) {
     return Math.log(val) / Math.LN2;
 }
 
-var scaleType = "LOG"; // LINEAR
+var scaleType = "LINEAR";
 
 var getNodeColor = function (node) {
         // here different colors for tx, input, output, mixed and txconfirmed
@@ -222,6 +223,7 @@ function init() {
 }
 
 
+
 var colorNodes = function (node, color) {
     if (node && node.id) {
         graph.forEachNode(function (node) {
@@ -245,6 +247,7 @@ function addNodes(link) {
             // such a node already exists
             if (node.data && node.data.t && node.data.t == "o") {
                 node.data.t = "mix";
+                writeToScreen("NODE_UI_COL_I: " + JSON.stringify(node));
                 node.ui.color = 16776960;
                 renderer.rerender();
             }
@@ -260,6 +263,7 @@ function addNodes(link) {
             // such a node alredy exists.  
             if (node.data && node.data.t && node.data.t == "i") {
                 node.data.t = "mix";
+                writeToScreen("NODE_UI_COL_O: " + JSON.stringify(node.ui));
                 node.ui.color = 16776960;
                 renderer.rerender();
             }
@@ -368,24 +372,24 @@ function writeToScreen(message) {
     //pre.style.wordWrap = "break-word";
     //pre.innerHTML = message;
    // output.appendChild(pre);
-    //console.log("DDDDDDDDDDDDDDDDDDD ")
+    console.log("DDDDDDDDDDDDDDDDDDD ")
     document.getElementById("info").innerHTML =  "<br/>" + message ;
 }
 
-//function testRestAPI() {
-    //writeToScreen('TEEEEEESSSSS')
-//client.methods.getAllTxs(function (data, response) {
-// parsed response body as js object 
-//console.log(data);
-//writeToScreen('DATA:' + data); 
-//processData(data.Right)
-// raw response 
-//console.log(response);
-//setTimeout(function () {
-//    getNodes()
-//}, 3000);
-//});
-//}
+function testRestAPI() {
+    writeToScreen('TEEEEEESSSSS')
+    client.methods.getAllTxs(function (data, response) {
+    // parsed response body as js object 
+    //console.log(data);
+    writeToScreen('DATA:' + data); 
+    processData(data.Right)
+    // raw response 
+    console.log(response);
+    setTimeout(function () {
+        testRestAPI()
+    }, 3000);
+    });
+}
 
 
 function processData(data) {
@@ -400,7 +404,7 @@ var txHash = data[i].cteId;
 args.path.id = txHash
 var node = {}
 
-/*client.methods.getTxSummary(args, function (msg, response) {
+client.methods.getTxSummary(args, function (msg, response) {
     var node = msg.Right
 
     writeToScreen('NIDE:' + node); 
@@ -455,11 +459,10 @@ var node = {}
         }
 
     }
-});*/
+});
  }
 }
 window.addEventListener("load", init, false);
 window.l = layout;
 window.g = graph;
 window.r = renderer;
-
