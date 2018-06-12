@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "start": "node_modules/.bin/browserify -d -s ngraph index.js > bundle.js"
+    "start": "node_modules/.bin/browserify -d -s ngraph src/app.js > dist/bundle.js"
   },
   "dependencies": {
     "ngraph.generators": "latest",
-    "ngraph.pixi": "latest"
+    "ngraph.pixi": "latest",
+    "node-rest-client": "^3.1.0",
+    "node-rest-client-promise": "^3.1.0"
   },
   "devDependencies": {
     "browserify": "latest"
