@@ -1,6 +1,6 @@
 // here define functions to draw points and lines 
-//var Viva = require('./vivagraph.js');
-var Viva = require('vivagraphjs');
+var Viva = require('./vivagraph.js');
+//var Viva = require('vivagraphjs');
 
 Viva.Graph.View.webglDualColorLine = function (t, e) {
 //function dualColorLine (t, e) {

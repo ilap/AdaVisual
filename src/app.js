@@ -3,6 +3,17 @@ var Viva = require('./custom_webgl.js');
 
 var graphics = Viva.Graph.View.webglGraphics();
 
+class Test {
+  constructor(options) {
+    this.alma = 'alma'
+    this.korte = 'korte'
+  }
+
+  render() {
+    console.log("render: ", this.alma, this.koret)
+  }
+}
+
 var args = {
     path: {
         "id": "abd8c6ee1ea138a532b4bc25976a011c84c942c41203e943fe5f6c6f5e94a341"
