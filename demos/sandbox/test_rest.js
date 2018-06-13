@@ -52,10 +52,14 @@ function processTransactions(txs) {
 
     var txHash = txs[i].cteId;
 
+    var links = []
     args.path.id = txHash
     Client.methods.getTxSummary(args)
       .then(function (result) {
-        console.log("XXXXXXXXXXXXResult: ", result.data.Right)
+        var tx = result.data.Right
+        //console.log("XXXXXXXXXXXXResult: ", result.data.Right)
+        processTransaction(tx)
+    
       })
       .catch(function (e) {
             console.log("ERRO: ", err)
@@ -67,4 +71,39 @@ function processTransactions(txs) {
           }
       )
   } 
+}
+
+function processTransaction(tx) {
+  
+  console.log("################################################")
+  console.log("Result: ", tx.ctsId)
+
+  var links = []
+  var link = {}
+
+  var inputs = tx.ctsInputs
+  for (var i = 0; i < inputs.length; i++) {
+    link = {
+      from: inputs[i][0],
+      to:   tx.ctsId,
+      value: inputs[i][1].getCoin,
+      t: "i"
+    }
+    console.log("Link: ", JSON.stringify(link))
+
+    links.push(link)
+  }
+
+  var outputs = tx.ctsOutputs
+  for (var i = 0; i < outputs.length; i++) {
+    link = {
+      from:  tx.ctsId,
+      to:    outputs[i][0],
+      value: outputs[i][1].getCoin,
+      t: "o"
+    }
+    console.log("Link: ", JSON.stringify(link))
+
+    links.push(link)
+  }
 }
