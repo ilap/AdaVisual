@@ -1,6 +1,6 @@
 # Cardano Blockchain Visual
 
-# Websocket, Socket.IO and Rest-API descritpions
+# Websocket, Socket.IO and Rest-API descriptions
 
 ## BTC
 

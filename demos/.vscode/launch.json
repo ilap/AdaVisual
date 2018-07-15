@@ -8,8 +8,13 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///home/data/Projects/WebProgramming/AdaVisual/demos/index.html",
-            "webRoot": "${workspaceFolder}"
+            "url": "file:///home/data/Projects/WebProgramming/AdaVisual/demos/dist/index.html",
+            "webRoot": "${workspaceFolder}",
+            "program": "${workspaceRoot}/src/app.js",
+            "outFiles": [
+              "${workspaceRoot}/dist/bundle.js"
+            ],
+            "sourceMaps": true
         }
     ]
 }

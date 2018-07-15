@@ -1,7 +1,10 @@
 module.exports.main = function () {
 
+  var is_node = false
+
   if (typeof window === 'undefined') {
     console.log("In Node.js")
+    is_node = true
   } else {
     console.log("In Browser")
   }
@@ -10,29 +13,33 @@ module.exports.main = function () {
   // TODO: Separate the UI from the business logic
   var createNodes = require('./lib/mock_data.js')(graph)
   var layout = createLayout(graph);
-
-//ILAP:  var createPixiGraphics = require('ngraph.pixi');
-//ILAP:  var pixiGraphics = createPixiGraphics(graph, layout);
-  // setup our custom looking nodes and links:
-//ILAP:  pixiGraphics.createNodeUI(require('./lib/createNodeUI'))
-//ILAP:    .renderNode(require('./lib/renderNode'))
-//ILAP:    .createLinkUI(require('./lib/createLinkUI'))
-//ILAP:    .renderLink(require('./lib/renderLink'));
-
-//ILAP:  console.log(pixiGraphics.graphGraphics)
-//ILAP:  pixiGraphics.graphGraphics.scale.x = 0.35
-
-//ILAP:  pixiGraphics.graphGraphics.scale.y = 0.35
-
-  //layout = pixiGraphics.layout;
-  //var node = graph.getNode(tx) 
-  //layout.pinNode(node,true);
-
-  // begin animation loop:
-  console.log("AAAA:" + JSON.stringify(createNodes))
   createNodes(0)
-//ILAP:  pixiGraphics.run();
 
+  console.log("AAAA:" + JSON.stringify(createNodes))
+  
+  if (! is_node) {
+
+    var createPixiGraphics = require('ngraph.pixi');
+    var pixiGraphics = createPixiGraphics(graph, layout);
+      // setup our custom looking nodes and links:
+    pixiGraphics.createNodeUI(require('./ui/createNodeUI'))
+      .renderNode(require('./ui/renderNode'))
+      .createLinkUI(require('./ui/createLinkUI'))
+      .renderLink(require('./ui/renderLink'));
+
+    console.log(pixiGraphics.graphGraphics)
+    pixiGraphics.graphGraphics.scale.x = 0.35
+
+    pixiGraphics.graphGraphics.scale.y = 0.35
+
+    layout = pixiGraphics.layout;
+    var nodes = graph.getNode("t0") 
+    layout.pinNode(nodes,true);
+
+    // begin animation loop:
+    pixiGraphics.run();
+  }
+ 
 }
 
 function createLayout(graph) {

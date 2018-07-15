@@ -9,3 +9,4 @@ dump
 package-lock.json
 dist/*.js
 dist/*.map
+**/bundle.js
