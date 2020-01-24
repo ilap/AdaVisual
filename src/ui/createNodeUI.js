@@ -3,7 +3,7 @@ module.exports = function (node) {
   return new AnimatedNode(node);
 }
 
-var colorLookup = [0x00FFFF, 0xFF0000, 0x00FF00];
+var colorLookup = [0xFFA7D2, 0xF7E2CF, 0xBEABE0];
 
 function AnimatedNode(node) {
   var color = node.data.type === 't' ? 0 : node.data.type === 'o' ? 1 : 2
